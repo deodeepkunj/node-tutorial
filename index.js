@@ -28,14 +28,59 @@
  * TODO: Explore behavior by adjusting the `setTimeout` delay to understand event loop execution order.
  */
 
-console.log("Start");
+// console.log("Start");
 
-setTimeout(() => {
-  console.log("Timeout 1");
-}, 2000);
+// setTimeout(() => {
+//   console.log("Timeout 1");
+// }, 2000);
 
-setImmediate(() => {
-  console.log("Immediate 1");
+// setImmediate(() => {
+//   console.log("Immediate 1");
+// });
+
+// console.log("End");
+
+const fs = require("fs");
+/**
+ * [ Creating a readable stream ]
+ * ? `createReadStream` reads data from a file in chunks, which is useful for handling large files.
+ */
+const readableStream = fs.createReadStream("input.txt", { encoding: "utf8" });
+
+/**
+ * [ Creating a writable stream ]
+ * ? `createWriteStream` writes data into a file, and it can be used to write data as we read it.
+ */
+const writableStream = fs.createWriteStream("output.txt");
+
+/**
+ * [ Piping data from readable to writable ]
+ * * `pipe` is a method to pass data from a readable stream directly to a writable stream.
+ * * It ensures that data is handled efficiently without reading the entire file into memory.
+ */
+readableStream.pipe(writableStream);
+
+/**
+ * [ Handling events ]
+ */
+
+readableStream.on("data", (chunk) => {
+  /**
+   * ? Logs each chunk of data read from `input.txt`.
+   */
+  console.log("Received chunk:", chunk);
 });
 
-console.log("End");
+readableStream.on("end", () => {
+  /**
+   * * Indicates that there is no more data to be read from `input.txt`.
+   */
+  console.log("Finished reading the file.");
+});
+
+writableStream.on("finish", () => {
+  /**
+   * * Indicates that all data has been written to `output.txt`.
+   */
+  console.log("Finished writing to the file.");
+});
