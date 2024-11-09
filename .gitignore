@@ -32,6 +32,14 @@ coverage
 # Bower dependency directory (https://bower.io/)
 bower_components
 
+# vs code settings
+.vscode
+
+# drive upload
+.temp.drivedownload
+.temp.driveupload
+.idea
+
 # node-waf configuration
 .lock-wscript
 
@@ -86,6 +94,9 @@ web_modules/
 # Next.js build output
 .next
 out
+
+# Next.js nodemodules
+node_modules
 
 # Nuxt.js build / generate output
 .nuxt
