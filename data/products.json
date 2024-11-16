@@ -1,1 +1,9 @@
-[{"title":"Book 1"},{"title":"Book 2"},{"title":"Book 1"},{"title":"Book 4"}]
+[
+  {
+    "id": "123245",
+    "title": "A Book",
+    "imageUrl": "https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010_640.jpg",
+    "description": "This is an awesome book!",
+    "price": "19"
+  }
+]
